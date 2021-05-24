@@ -13,10 +13,29 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>crm</name>
     <description>Demo project for Spring Boot</description>
+    <packaging>war</packaging>
     <properties>
         <java.version>1.8</java.version>
+        <mysql.version>8.0.23</mysql.version>
     </properties>
     <dependencies>
+<!--        分页插件-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- mybatis逆向工程jar包 -->
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.3.2</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -41,6 +60,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
+            <version>${mysql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -73,7 +93,27 @@
                     </excludes>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <configuration>
+                    <overwrite>true</overwrite>
+                    <configurationFile>src/main/resources/generator/generatorConfig.xml</configurationFile>
+                </configuration>
+            </plugin>
         </plugins>
+
+<!--        <resources>-->
+<!--            <resource>-->
+<!--                <directory>src/main/webapp</directory>-->
+<!--                <targetPath>META-INF/resources</targetPath>-->
+<!--                <includes>-->
+<!--                    <include>**/*.*</include>-->
+<!--                </includes>-->
+<!--            </resource>-->
+<!--        </resources>-->
     </build>
 
 </project>

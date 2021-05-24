@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zarek.crm.dao.TranHistoryMapper" >
+  <resultMap id="BaseResultMap" type="com.zarek.crm.pojo.domain.TranHistory" >
+    <id column="transactionHistoryId" property="transactionhistoryid" jdbcType="CHAR" />
+    <result column="stage" property="stage" jdbcType="VARCHAR" />
+    <result column="money" property="money" jdbcType="VARCHAR" />
+    <result column="expectedDate" property="expecteddate" jdbcType="CHAR" />
+    <result column="createTime" property="createtime" jdbcType="CHAR" />
+    <result column="createBy" property="createby" jdbcType="VARCHAR" />
+    <result column="transactionId" property="transactionid" jdbcType="CHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbl_tran_history
+    where transactionHistoryId = #{transactionhistoryid,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zarek.crm.pojo.domain.TranHistory" >
+    insert into tbl_tran_history (transactionHistoryId, stage, money, 
+      expectedDate, createTime, createBy, 
+      transactionId)
+    values (#{transactionhistoryid,jdbcType=CHAR}, #{stage,jdbcType=VARCHAR}, #{money,jdbcType=VARCHAR}, 
+      #{expecteddate,jdbcType=CHAR}, #{createtime,jdbcType=CHAR}, #{createby,jdbcType=VARCHAR}, 
+      #{transactionid,jdbcType=CHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zarek.crm.pojo.domain.TranHistory" >
+    update tbl_tran_history
+    set stage = #{stage,jdbcType=VARCHAR},
+      money = #{money,jdbcType=VARCHAR},
+      expectedDate = #{expecteddate,jdbcType=CHAR},
+      createTime = #{createtime,jdbcType=CHAR},
+      createBy = #{createby,jdbcType=VARCHAR},
+      transactionId = #{transactionid,jdbcType=CHAR}
+    where transactionHistoryId = #{transactionhistoryid,jdbcType=CHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select transactionHistoryId, stage, money, expectedDate, createTime, createBy, transactionId
+    from tbl_tran_history
+    where transactionHistoryId = #{transactionhistoryid,jdbcType=CHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select transactionHistoryId, stage, money, expectedDate, createTime, createBy, transactionId
+    from tbl_tran_history
+  </select>
+</mapper>

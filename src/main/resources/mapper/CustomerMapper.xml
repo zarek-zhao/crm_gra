@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zarek.crm.dao.CustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.zarek.crm.pojo.domain.Customer" >
+    <id column="customerId" property="customerid" jdbcType="CHAR" />
+    <result column="owner" property="owner" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="website" property="website" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="createBy" property="createby" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="CHAR" />
+    <result column="editBy" property="editby" jdbcType="VARCHAR" />
+    <result column="editTime" property="edittime" jdbcType="CHAR" />
+    <result column="contactSummary" property="contactsummary" jdbcType="VARCHAR" />
+    <result column="nextContactTime" property="nextcontacttime" jdbcType="CHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbl_customer
+    where customerId = #{customerid,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zarek.crm.pojo.domain.Customer" >
+    insert into tbl_customer (customerId, owner, name, 
+      website, phone, createBy, 
+      createTime, editBy, editTime, 
+      contactSummary, nextContactTime, description, 
+      address)
+    values (#{customerid,jdbcType=CHAR}, #{owner,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, 
+      #{website,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=CHAR}, #{editby,jdbcType=VARCHAR}, #{edittime,jdbcType=CHAR}, 
+      #{contactsummary,jdbcType=VARCHAR}, #{nextcontacttime,jdbcType=CHAR}, #{description,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zarek.crm.pojo.domain.Customer" >
+    update tbl_customer
+    set owner = #{owner,jdbcType=CHAR},
+      name = #{name,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      createBy = #{createby,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=CHAR},
+      editBy = #{editby,jdbcType=VARCHAR},
+      editTime = #{edittime,jdbcType=CHAR},
+      contactSummary = #{contactsummary,jdbcType=VARCHAR},
+      nextContactTime = #{nextcontacttime,jdbcType=CHAR},
+      description = #{description,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR}
+    where customerId = #{customerid,jdbcType=CHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select customerId, owner, name, website, phone, createBy, createTime, editBy, editTime, 
+    contactSummary, nextContactTime, description, address
+    from tbl_customer
+    where customerId = #{customerid,jdbcType=CHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select customerId, owner, name, website, phone, createBy, createTime, editBy, editTime, 
+    contactSummary, nextContactTime, description, address
+    from tbl_customer
+  </select>
+</mapper>

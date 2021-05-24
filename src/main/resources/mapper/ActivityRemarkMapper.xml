@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zarek.crm.dao.ActivityRemarkMapper" >
+  <resultMap id="BaseResultMap" type="com.zarek.crm.pojo.domain.ActivityRemark" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="noteContent" property="notecontent" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="CHAR" />
+    <result column="createBy" property="createby" jdbcType="VARCHAR" />
+    <result column="editTime" property="edittime" jdbcType="CHAR" />
+    <result column="editBy" property="editby" jdbcType="VARCHAR" />
+    <result column="editFlag" property="editflag" jdbcType="CHAR" />
+    <result column="activityId" property="activityid" jdbcType="CHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbl_activity_remark
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zarek.crm.pojo.domain.ActivityRemark" >
+    insert into tbl_activity_remark (id, noteContent, createTime, 
+      createBy, editTime, editBy, 
+      editFlag, activityId)
+    values (#{id,jdbcType=CHAR}, #{notecontent,jdbcType=VARCHAR}, #{createtime,jdbcType=CHAR}, 
+      #{createby,jdbcType=VARCHAR}, #{edittime,jdbcType=CHAR}, #{editby,jdbcType=VARCHAR}, 
+      #{editflag,jdbcType=CHAR}, #{activityid,jdbcType=CHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zarek.crm.pojo.domain.ActivityRemark" >
+    update tbl_activity_remark
+    set noteContent = #{notecontent,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=CHAR},
+      createBy = #{createby,jdbcType=VARCHAR},
+      editTime = #{edittime,jdbcType=CHAR},
+      editBy = #{editby,jdbcType=VARCHAR},
+      editFlag = #{editflag,jdbcType=CHAR},
+      activityId = #{activityid,jdbcType=CHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select id, noteContent, createTime, createBy, editTime, editBy, editFlag, activityId
+    from tbl_activity_remark
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, noteContent, createTime, createBy, editTime, editBy, editFlag, activityId
+    from tbl_activity_remark
+  </select>
+</mapper>

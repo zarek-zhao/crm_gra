@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zarek.crm.dao.TranRemarkMapper" >
+  <resultMap id="BaseResultMap" type="com.zarek.crm.pojo.domain.TranRemark" >
+    <id column="transactionRemarkId" property="transactionremarkid" jdbcType="CHAR" />
+    <result column="noteContent" property="notecontent" jdbcType="VARCHAR" />
+    <result column="createBy" property="createby" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="CHAR" />
+    <result column="editBy" property="editby" jdbcType="VARCHAR" />
+    <result column="editTime" property="edittime" jdbcType="CHAR" />
+    <result column="editFlag" property="editflag" jdbcType="CHAR" />
+    <result column="transactionId" property="transactionid" jdbcType="CHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbl_tran_remark
+    where transactionRemarkId = #{transactionremarkid,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zarek.crm.pojo.domain.TranRemark" >
+    insert into tbl_tran_remark (transactionRemarkId, noteContent, createBy, 
+      createTime, editBy, editTime, 
+      editFlag, transactionId)
+    values (#{transactionremarkid,jdbcType=CHAR}, #{notecontent,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=CHAR}, #{editby,jdbcType=VARCHAR}, #{edittime,jdbcType=CHAR}, 
+      #{editflag,jdbcType=CHAR}, #{transactionid,jdbcType=CHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zarek.crm.pojo.domain.TranRemark" >
+    update tbl_tran_remark
+    set noteContent = #{notecontent,jdbcType=VARCHAR},
+      createBy = #{createby,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=CHAR},
+      editBy = #{editby,jdbcType=VARCHAR},
+      editTime = #{edittime,jdbcType=CHAR},
+      editFlag = #{editflag,jdbcType=CHAR},
+      transactionId = #{transactionid,jdbcType=CHAR}
+    where transactionRemarkId = #{transactionremarkid,jdbcType=CHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select transactionRemarkId, noteContent, createBy, createTime, editBy, editTime, 
+    editFlag, transactionId
+    from tbl_tran_remark
+    where transactionRemarkId = #{transactionremarkid,jdbcType=CHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select transactionRemarkId, noteContent, createBy, createTime, editBy, editTime, 
+    editFlag, transactionId
+    from tbl_tran_remark
+  </select>
+</mapper>

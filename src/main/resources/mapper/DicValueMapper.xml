@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zarek.crm.dao.DicValueMapper" >
+  <resultMap id="BaseResultMap" type="com.zarek.crm.pojo.domain.DicValue" >
+    <id column="id" property="id" jdbcType="CHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="value" property="value" jdbcType="VARCHAR" />
+    <result column="text" property="text" jdbcType="VARCHAR" />
+    <result column="orderNo" property="orderno" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbl_dic_value
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zarek.crm.pojo.domain.DicValue" >
+    insert into tbl_dic_value (id, code, value, 
+      text, orderNo)
+    values (#{id,jdbcType=CHAR}, #{code,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
+      #{text,jdbcType=VARCHAR}, #{orderno,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zarek.crm.pojo.domain.DicValue" >
+    update tbl_dic_value
+    set code = #{code,jdbcType=VARCHAR},
+      value = #{value,jdbcType=VARCHAR},
+      text = #{text,jdbcType=VARCHAR},
+      orderNo = #{orderno,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select id, code, value, text, orderNo
+    from tbl_dic_value
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, code, value, text, orderNo
+    from tbl_dic_value
+  </select>
+</mapper>

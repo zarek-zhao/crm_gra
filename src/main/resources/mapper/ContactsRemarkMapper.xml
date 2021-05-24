@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zarek.crm.dao.ContactsRemarkMapper" >
+  <resultMap id="BaseResultMap" type="com.zarek.crm.pojo.domain.ContactsRemark" >
+    <id column="contactRemarkId" property="contactremarkid" jdbcType="CHAR" />
+    <result column="noteContent" property="notecontent" jdbcType="VARCHAR" />
+    <result column="createBy" property="createby" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="CHAR" />
+    <result column="editBy" property="editby" jdbcType="VARCHAR" />
+    <result column="editTime" property="edittime" jdbcType="CHAR" />
+    <result column="editFlag" property="editflag" jdbcType="CHAR" />
+    <result column="contactsId" property="contactsid" jdbcType="CHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbl_contacts_remark
+    where contactRemarkId = #{contactremarkid,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zarek.crm.pojo.domain.ContactsRemark" >
+    insert into tbl_contacts_remark (contactRemarkId, noteContent, createBy, 
+      createTime, editBy, editTime, 
+      editFlag, contactsId)
+    values (#{contactremarkid,jdbcType=CHAR}, #{notecontent,jdbcType=VARCHAR}, #{createby,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=CHAR}, #{editby,jdbcType=VARCHAR}, #{edittime,jdbcType=CHAR}, 
+      #{editflag,jdbcType=CHAR}, #{contactsid,jdbcType=CHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zarek.crm.pojo.domain.ContactsRemark" >
+    update tbl_contacts_remark
+    set noteContent = #{notecontent,jdbcType=VARCHAR},
+      createBy = #{createby,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=CHAR},
+      editBy = #{editby,jdbcType=VARCHAR},
+      editTime = #{edittime,jdbcType=CHAR},
+      editFlag = #{editflag,jdbcType=CHAR},
+      contactsId = #{contactsid,jdbcType=CHAR}
+    where contactRemarkId = #{contactremarkid,jdbcType=CHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select contactRemarkId, noteContent, createBy, createTime, editBy, editTime, editFlag, 
+    contactsId
+    from tbl_contacts_remark
+    where contactRemarkId = #{contactremarkid,jdbcType=CHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select contactRemarkId, noteContent, createBy, createTime, editBy, editTime, editFlag, 
+    contactsId
+    from tbl_contacts_remark
+  </select>
+</mapper>

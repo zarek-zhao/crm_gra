@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zarek.crm.dao.ContactsMapper" >
+  <resultMap id="BaseResultMap" type="com.zarek.crm.pojo.domain.Contacts" >
+    <id column="contactsId" property="contactsid" jdbcType="CHAR" />
+    <result column="owner" property="owner" jdbcType="CHAR" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="customerId" property="customerid" jdbcType="CHAR" />
+    <result column="fullname" property="fullname" jdbcType="VARCHAR" />
+    <result column="appellation" property="appellation" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="mphone" property="mphone" jdbcType="VARCHAR" />
+    <result column="job" property="job" jdbcType="VARCHAR" />
+    <result column="birth" property="birth" jdbcType="CHAR" />
+    <result column="createBy" property="createby" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="CHAR" />
+    <result column="editBy" property="editby" jdbcType="VARCHAR" />
+    <result column="editTime" property="edittime" jdbcType="CHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="contactSummary" property="contactsummary" jdbcType="VARCHAR" />
+    <result column="nextContactTime" property="nextcontacttime" jdbcType="CHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbl_contacts
+    where contactsId = #{contactsid,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zarek.crm.pojo.domain.Contacts" >
+    insert into tbl_contacts (contactsId, owner, source, 
+      customerId, fullname, appellation, 
+      email, mphone, job, 
+      birth, createBy, createTime, 
+      editBy, editTime, description, 
+      contactSummary, nextContactTime, address
+      )
+    values (#{contactsid,jdbcType=CHAR}, #{owner,jdbcType=CHAR}, #{source,jdbcType=VARCHAR}, 
+      #{customerid,jdbcType=CHAR}, #{fullname,jdbcType=VARCHAR}, #{appellation,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{mphone,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, 
+      #{birth,jdbcType=CHAR}, #{createby,jdbcType=VARCHAR}, #{createtime,jdbcType=CHAR}, 
+      #{editby,jdbcType=VARCHAR}, #{edittime,jdbcType=CHAR}, #{description,jdbcType=VARCHAR}, 
+      #{contactsummary,jdbcType=VARCHAR}, #{nextcontacttime,jdbcType=CHAR}, #{address,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zarek.crm.pojo.domain.Contacts" >
+    update tbl_contacts
+    set owner = #{owner,jdbcType=CHAR},
+      source = #{source,jdbcType=VARCHAR},
+      customerId = #{customerid,jdbcType=CHAR},
+      fullname = #{fullname,jdbcType=VARCHAR},
+      appellation = #{appellation,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      mphone = #{mphone,jdbcType=VARCHAR},
+      job = #{job,jdbcType=VARCHAR},
+      birth = #{birth,jdbcType=CHAR},
+      createBy = #{createby,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=CHAR},
+      editBy = #{editby,jdbcType=VARCHAR},
+      editTime = #{edittime,jdbcType=CHAR},
+      description = #{description,jdbcType=VARCHAR},
+      contactSummary = #{contactsummary,jdbcType=VARCHAR},
+      nextContactTime = #{nextcontacttime,jdbcType=CHAR},
+      address = #{address,jdbcType=VARCHAR}
+    where contactsId = #{contactsid,jdbcType=CHAR}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select contactsId, owner, source, customerId, fullname, appellation, email, mphone, 
+    job, birth, createBy, createTime, editBy, editTime, description, contactSummary, 
+    nextContactTime, address
+    from tbl_contacts
+    where contactsId = #{contactsid,jdbcType=CHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select contactsId, owner, source, customerId, fullname, appellation, email, mphone, 
+    job, birth, createBy, createTime, editBy, editTime, description, contactSummary, 
+    nextContactTime, address
+    from tbl_contacts
+  </select>
+</mapper>
