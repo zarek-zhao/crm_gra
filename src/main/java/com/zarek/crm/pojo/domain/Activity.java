@@ -1,7 +1,5 @@
 package com.zarek.crm.pojo.domain;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.io.Serializable;
 
 public class Activity implements Serializable {
@@ -10,19 +8,19 @@ public class Activity implements Serializable {
     private String owner;
 
     private String name;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+
     private String startdate;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+
     private String enddate;
 
     private String cost;
 
     private String description;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+
     private String createtime;
 
     private String createby;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+
     private String edittime;
 
     private String editby;

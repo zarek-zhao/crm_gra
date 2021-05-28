@@ -64,4 +64,5 @@
         <table tableName="tbl_tran_remark" domainObjectName="TranRemark"></table>
         <table tableName="tbl_user" domainObjectName="User"></table>
     </context>
+
 </generatorConfiguration>

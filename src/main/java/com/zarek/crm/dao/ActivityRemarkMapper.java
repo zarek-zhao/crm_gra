@@ -4,7 +4,6 @@ import com.zarek.crm.pojo.domain.ActivityRemark;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
 @Repository
 public interface ActivityRemarkMapper {
     int deleteByPrimaryKey(String id);

@@ -8,8 +8,6 @@ import java.util.Map;
 
 @Repository
 public interface UserMapper {
-    User selectByLoginActAndLoginPwd(Map<String,String> map);
-
     int deleteByPrimaryKey(String id);
 
     int insert(User record);
@@ -19,4 +17,6 @@ public interface UserMapper {
     List<User> selectAll();
 
     int updateByPrimaryKey(User record);
+
+    User selectByLoginActAndLoginPwd(Map<String, String> map);
 }

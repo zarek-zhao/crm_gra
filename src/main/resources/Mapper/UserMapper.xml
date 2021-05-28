@@ -16,11 +16,6 @@
     <result column="editTime" property="edittime" jdbcType="CHAR" />
     <result column="editBy" property="editby" jdbcType="VARCHAR" />
   </resultMap>
-
-  <select id="selectByLoginActAndLoginPwd" resultType="com.zarek.crm.pojo.domain.User">
-    select * from tbl_user where loginAct=#{loginAct} and loginPwd=#{loginPwd}
-  </select>
-
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from tbl_user
     where id = #{id,jdbcType=CHAR}
@@ -64,4 +59,8 @@
     createTime, createBy, editTime, editBy
     from tbl_user
   </select>
+  <select id="selectByLoginActAndLoginPwd" resultType="com.zarek.crm.pojo.domain.User">
+    select * from tbl_user where loginAct=#{loginAct} and loginPwd=#{loginPwd}
+  </select>
+
 </mapper>
