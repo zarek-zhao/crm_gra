@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--[if lt IE 9]>
+    <link th:href="@{/image/myfavicon.ico}" href="image/myfavicon.ico" rel="shortcut icon">
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <title>error_404</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" th:src="@{/errorjquery/jquery-1.8.3.min.js}" src="js/jquery-1.8.3.min.js"></script>
+    <script th:src="@{/errorjquery/preloader.js}" src="js/preloader.js"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Finger+Paint' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" th:src="@{/errorjquery/css_browser_selector.js}" src="js/css_browser_selector.js"></script>
+    <script type="text/javascript" th:src="@{/errorjquery/plax.js}" src="js/plax.js"></script>
+    <script type="text/javascript" th:src="@{/errorjquery/jquery.spritely-0.6.1.js}" src="js/jquery.spritely-0.6.1.js"></script>
+    <script type="text/javascript" th:src="@{/errorjquery/jquery-animate-css-rotate-scale.js}" src="js/jquery-animate-css-rotate-scale.js"></script>
+    <script type="text/javascript" th:src="@{/errorjquery/script.js}" src="js/script.js"></script>
+</head>
+<body >
+<div id="indicator"></div>
+<div class="wrapper">
+    <div class="sky init">
+        <div id="clouds" class="clouds init"> </div>
+    </div>
+
+    <div class="convas init">
+        <div id="mountain" class="mountain"></div>
+        <div class="ground"></div>
+        <div class="holder">
+            <div class="rocks"></div>
+            <div class="work-sign"></div>
+            <div class="text-sign">
+                <div class="text font">
+                    404  error
+                    We're Working Hard...
+
+                </div>
+            </div>
+            <div class="init hole">
+                <div class="sweat"></div>
+                <div class="worker swing "></div>
+                <div class="ground-bottom">
+                    <div class="cleaner"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .copyrights{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
+</style>
+</body>
+</html>
+
