@@ -234,7 +234,7 @@
 			})
 
 			//为删除按钮绑定事件，执行市场活动删除操作
-			$("#deleteBtn1").click(function () {
+			$("#deleteBtn").click(function () {
 
 				//找到复选框中所有挑√的复选框的jquery对象
 				var $xz = $("input[name=xz]:checked");
@@ -271,7 +271,7 @@
 						//alert(param);
 						$.ajax({
 
-							url : "workbench/activity/delete.do",
+							url : /*[[@{/workbench/activity/delete.do}]]*/"workbench/activity/delete.do",
 							data : param,
 							type : "post",
 							dataType : "json",
@@ -749,7 +749,7 @@
 				<div class="btn-group" style="position: relative; top: 18%;">
 				  <button type="button" id="addBtn" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> 创建</button>
 				  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#editActivityModal"><span class="glyphicon glyphicon-pencil"></span> 修改</button>
-				  <button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span> 删除</button>
+				  <button id="deleteBtn" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-minus"></span> 删除</button>
 				</div>
 				
 			</div>

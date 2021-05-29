@@ -6,13 +6,16 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface ActivityRemarkMapper {
-    int deleteByPrimaryKey(String id);
 
-    int insert(ActivityRemark record);
+    int getCountByAids(String[] ids);
 
-    ActivityRemark selectByPrimaryKey(String id);
+    int deleteByAids(String[] ids);
 
-    List<ActivityRemark> selectAll();
+    List<ActivityRemark> getRemarkListByAid(String activityId);
 
-    int updateByPrimaryKey(ActivityRemark record);
+    int deleteById(String id);
+
+    int saveRemark(ActivityRemark ar);
+
+    int updateRemark(ActivityRemark ar);
 }

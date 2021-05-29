@@ -22,4 +22,6 @@ public interface ActivityService {
     PaginationVO<Activity> pageList(Map<String, Object> map);
 
     Activity detail(String id);
+
+    boolean delete(String[] ids);
 }

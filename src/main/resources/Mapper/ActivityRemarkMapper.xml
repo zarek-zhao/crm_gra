@@ -11,36 +11,90 @@
     <result column="editFlag" property="editflag" jdbcType="CHAR" />
     <result column="activityId" property="activityid" jdbcType="CHAR" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from tbl_activity_remark
-    where id = #{id,jdbcType=CHAR}
-  </delete>
-  <insert id="insert" parameterType="com.zarek.crm.pojo.domain.ActivityRemark" >
-    insert into tbl_activity_remark (id, noteContent, createTime, 
-      createBy, editTime, editBy, 
-      editFlag, activityId)
-    values (#{id,jdbcType=CHAR}, #{notecontent,jdbcType=VARCHAR}, #{createtime,jdbcType=CHAR}, 
-      #{createby,jdbcType=VARCHAR}, #{edittime,jdbcType=CHAR}, #{editby,jdbcType=VARCHAR}, 
-      #{editflag,jdbcType=CHAR}, #{activityid,jdbcType=CHAR})
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.zarek.crm.pojo.domain.ActivityRemark" >
-    update tbl_activity_remark
-    set noteContent = #{notecontent,jdbcType=VARCHAR},
-      createTime = #{createtime,jdbcType=CHAR},
-      createBy = #{createby,jdbcType=VARCHAR},
-      editTime = #{edittime,jdbcType=CHAR},
-      editBy = #{editby,jdbcType=VARCHAR},
-      editFlag = #{editflag,jdbcType=CHAR},
-      activityId = #{activityid,jdbcType=CHAR}
-    where id = #{id,jdbcType=CHAR}
+
+
+  <update id="updateRemark">
+
+    update tbl_activity_remark set noteContent=#{noteContent},editBy=#{editBy},editTime=#{editTime},editFlag=#{editFlag}
+
+    where id=#{id}
+
   </update>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select id, noteContent, createTime, createBy, editTime, editBy, editFlag, activityId
-    from tbl_activity_remark
-    where id = #{id,jdbcType=CHAR}
+
+  <insert id="saveRemark">
+
+    insert into tbl_activity_remark(
+
+      id,
+      noteContent,
+      createTime,
+      createBy,
+      editFlag,
+      activityId
+
+
+    )
+
+    values(
+
+            #{id},
+            #{noteContent},
+            #{createTime},
+            #{createBy},
+            #{editFlag},
+            #{activityId}
+
+
+          )
+
+
+
+  </insert>
+
+  <delete id="deleteById">
+
+    delete from tbl_activity_remark where id=#{id}
+
+  </delete>
+
+  <select id="getRemarkListByAid" resultType="com.zarek.crm.pojo.domain.ActivityRemark">
+
+    select * from tbl_activity_remark where activityId=#{activityId}
+
   </select>
-  <select id="selectAll" resultMap="BaseResultMap" >
-    select id, noteContent, createTime, createBy, editTime, editBy, editFlag, activityId
+
+  <delete id="deleteByAids">
+
+    delete
+
     from tbl_activity_remark
+
+    where activityId in
+
+    <foreach collection="array" item="aid" open="(" close=")" separator=",">
+
+      #{aid}
+
+    </foreach>
+
+  </delete>
+
+  <select id="getCountByAids" resultType="int">
+
+    select count(*)
+
+    from tbl_activity_remark
+
+    where activityId in
+
+    <foreach collection="array" item="aid" open="(" close=")" separator=",">
+
+      #{aid}
+
+    </foreach>
+
+
   </select>
+
+
 </mapper>

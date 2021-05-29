@@ -213,7 +213,7 @@ public class ActivityController {
     }
 
     @RequestMapping(path = "/detail.do",method=RequestMethod.GET)
-    public String detail(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException, IOException
+    private String detail(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException, IOException
     {
 
         System.out.println("进入到跳转到详细信息页的操作");
@@ -227,5 +227,21 @@ public class ActivityController {
         return "/workbench/activity/detail";
     }
 
+    @RequestMapping(path = "/delete.do",method =RequestMethod.POST)
+    @ResponseBody
+    private Dto<Object> delete(HttpServletRequest request, HttpServletResponse response) {
+        Dto<Object> dto = new Dto<Object>();
+        System.out.println("执行市场活动的删除操作");
+
+        String ids[] = request.getParameterValues("id");
+
+        boolean flag = activityService.delete(ids);
+        if(flag){
+            dto.setSuccess("ture");
+        }else{
+            dto.setSuccess("false");
+        }
+        return dto;
+    }
 
 }
